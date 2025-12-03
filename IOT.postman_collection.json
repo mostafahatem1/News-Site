@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "b8afa3ff-04c3-4b50-8a09-1e3d829ceee9",
+		"name": "IOT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26152350"
+	},
+	"item": [
+		{
+			"name": "Get Main Category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"value": "ase1iXcLAxanvXLZcgh6tk",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/get-category",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"get-category"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

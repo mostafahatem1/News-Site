@@ -1,0 +1,1157 @@
+{
+	"info": {
+		"_postman_id": "504d556c-5a48-49af-bfbb-a149266323fd",
+		"name": "News-site",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26152350"
+	},
+	"item": [
+		{
+			"name": "general",
+			"item": [
+				{
+					"name": "all_post",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/all/posts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"all",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/show/{slug}/post",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"show",
+								"{slug}",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "comments_posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/comments/{slug}/post/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comments",
+								"{slug}",
+								"post",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setting",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/settings",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"settings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all_category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/all/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"all",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categoryPost",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/category/fashoin-category/posts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"fashoin-category",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "seach_post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/search/posts?search=Cum id nihil iusto.",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"search",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Cum id nihil iusto."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_contact",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "mostafa hatem",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "mostafahate@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "football is favomcknvn",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "dfdsfffffffffffffffdfsdfsdfsdffdfdsfffffffffffffffdfsdfsdfsdff",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0126644431",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/contact/store",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contact",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "related_site",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|FippclQpnfjScdTEwjO3C9ajA0Ey6xTOh7EmkOYTc36b7654",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/related/sites",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"related",
+								"sites"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "password",
+					"item": [
+						{
+							"name": "forgot_password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|FippclQpnfjScdTEwjO3C9ajA0Ey6xTOh7EmkOYTc36b7654",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "amgedahatem@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/user/forgot-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"forgot-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "rest_password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/vnd.api+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "amgedahatem@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "otp",
+											"value": " 85997",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/user/reset-password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"reset-password"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.unset(\"token\");\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"token\", jsonData.data);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|FippclQpnfjScdTEwjO3C9ajA0Ey6xTOh7EmkOYTc36b7654",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "ziad",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "ziad760",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "01121377721",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "egypt",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "cairo",
+									"type": "text"
+								},
+								{
+									"key": "street",
+									"value": "abbasia",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ziad@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/laragon/www/news-site/public/frontend/img/user/10.jpg"
+								},
+								{
+									"key": "password",
+									"value": "1234512345",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "1234512345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.unset(\"token\");\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"token\", jsonData.data);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"packages": {},
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "amgedahatem@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234512345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|T6uvnT7786Y8stjLxNgsxqfjOm5aaTvV3UKSJMu68a3ffba2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "dschmitt@example.net",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify_email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "6|h5uw8gqn2N70bYx8OJzd5vi3ldwaSD4OQjneOXPI7301348f",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "33265",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/verify/email",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"verify",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rest_code_otp",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "6|h5uw8gqn2N70bYx8OJzd5vi3ldwaSD4OQjneOXPI7301348f",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "mostafa",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "mostafa760",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "01121377721",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "egypt",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "cairo",
+									"type": "text"
+								},
+								{
+									"key": "street",
+									"value": "abbasia",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "mostafahatem@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/laragon/www/news-site/public/frontend/img/user/10.jpg"
+								},
+								{
+									"key": "password",
+									"value": "1234512345",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "1234512345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/rest/code",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rest",
+								"code"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "account",
+			"item": [
+				{
+					"name": "Notification",
+					"item": [
+						{
+							"name": "get_notification",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "read_notification",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get_user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|UT0FFDg8qAjuxJ8fX5OnRIDgJD77kyEQD0BkVh3Z3316b19d",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "11|CdM0CnGXzQqmtuIqYR28m1rITTCPhXDZ2wS5q8Sj33ef4dd3",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "amged hatem",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "amged7",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "01121377721",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "egypt",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "cairo",
+									"type": "text"
+								},
+								{
+									"key": "street",
+									"value": "abbasia",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "amgedahatem@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [
+										"/D:/laragon/www/news-site/public/frontend/img/user/10.jpg",
+										"/D:/laragon/www/news-site/public/frontend/img/profile/education/pic2.jpg"
+									]
+								},
+								{
+									"key": "password",
+									"value": "1234512345",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password_confirmation",
+									"value": "1234512345",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "current_password",
+									"value": "12345678",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/update/account/14",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"update",
+								"account",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "11|CdM0CnGXzQqmtuIqYR28m1rITTCPhXDZ2wS5q8Sj33ef4dd3",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/account/get_post",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"account",
+								"get_post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store_post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "11|CdM0CnGXzQqmtuIqYR28m1rITTCPhXDZ2wS5q8Sj33ef4dd3",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "old title",
+									"type": "text"
+								},
+								{
+									"key": "desc",
+									"value": "dffdfsdfsfdfasdasd",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "comment_able",
+									"value": "on",
+									"type": "text"
+								},
+								{
+									"key": "images[]",
+									"type": "file",
+									"src": [
+										"postman-cloud:///1f079b80-0aa4-4eb0-8f1c-976771927b1f",
+										"postman-cloud:///1f079b80-0700-44d0-a716-3a0be7669016"
+									]
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/account/store_post",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"account",
+								"store_post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "11|CdM0CnGXzQqmtuIqYR28m1rITTCPhXDZ2wS5q8Sj33ef4dd3",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "mooooo staaaa",
+									"type": "text"
+								},
+								{
+									"key": "desc",
+									"value": "no one some here",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "comment_able",
+									"value": "on",
+									"type": "text"
+								},
+								{
+									"key": "images[]",
+									"type": "file",
+									"src": [
+										"/D:/laragon/www/news-site/public/frontend/img/logo.png",
+										"/D:/laragon/www/news-site/public/frontend/img/logo_1752414932.jpg"
+									]
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/account/update_post/new-title-2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"account",
+								"update_post",
+								"new-title-2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_post",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "post_comments",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "comment_store",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://news-site.test/api"
+		},
+		{
+			"key": "token",
+			"value": "5555",
+			"type": "string",
+			"description": {
+				"content": "",
+				"type": "text/plain"
+			}
+		}
+	]
+}
