@@ -62,7 +62,10 @@ class RegisterController extends Controller
         $user->notify(new SendOtpNotification($user));
         $token = $user->createToken('auth_token')->plainTextToken;
         DB::commit();
-        return api_response('Registration successful and OTP sent successfully', 201, $token );
+        return api_response('Registration successful and OTP sent successfully', 201, [
+            'user' => $user,
+            'token' => $token
+        ]);
         }catch(\Throwable $e){
             DB::rollBack();
             return api_response('Registration failed: ' . $e->getMessage(), 500, null);
@@ -70,4 +73,5 @@ class RegisterController extends Controller
 
 
     }
+
 }

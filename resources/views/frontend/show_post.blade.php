@@ -84,8 +84,8 @@
                     </div>
                     @if($single_post->comments->count() > 0)
                     <!-- Show More Button -->
-                    <button id="showMoreBtn" class="show-more-btn">Show more</button>
-                    <button id="showLessBtn" style="display: none;" class="show-more-btn">Show less</button>
+                    <button id="showMoreBtn" class="btn btn-primary">Show more</button>
+                    <button id="showLessBtn" style="display: none;" class="btn btn-primary">Show less</button>
                     @endif
                 </div>
 
@@ -111,93 +111,82 @@
 
             <div class="col-lg-4">
                 <div class="sidebar">
-                    <div class="sidebar-widget">
-                        <h2 class="sw-title">In This Category</h2>
-                        <div class="news-list">
-                            @foreach ($posts_belonging_to_category as $post)
-                            <div class="nl-item">
-                                <div class="nl-img">
-                                    <img src="{{ asset('frontend/img/' . $post->images->first()->path) }}" />
-                                </div>
-                                <div class="nl-title">
-                                    <a href="{{ route('frontend.post.show', $post->slug) }}">{{ $post->title }}</a>
-                                </div>
-                            </div>
-                            @endforeach
+    <div class="sidebar-widget">
+        <h2 class="sw-title">In This Category</h2>
+        <div class="news-list">
+            @foreach ($posts_belonging_to_category as $post)
+            <div class="nl-item">
+                <div class="nl-img">
+                    <img src="{{ asset('frontend/img/' . $post->images->first()->path) }}"
+                         style="width: 80px; height: 80px; object-fit: cover; display: block;" />
+                </div>
+                <div class="nl-title">
+                    <a href="{{ route('frontend.post.show', $post->slug) }}">{{ $post->title }}</a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
 
+    <div class="sidebar-widget">
+        <div class="tab-news">
+            <ul class="nav nav-pills nav-justified">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="pill" href="#latest">Latest</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#popular">Popular</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="latest" class="container tab-pane active">
+                    @foreach ($latest_posts as $post)
+                    <div class="tn-news">
+                        <div class="tn-img">
+                            <img src="{{ asset('frontend/img/' . $post->images->first()->path) }}"
+                                 style="width: 70px; height: 70px; object-fit: cover; display: block;" />
+                        </div>
+                        <div class="tn-title">
+                            <a href="{{ route('frontend.post.show', $post->slug) }}">{{ $post->title }}</a>
                         </div>
                     </div>
+                    @endforeach
+                </div>
 
-
-
-                    <div class="sidebar-widget">
-                        <div class="tab-news">
-                            <ul class="nav nav-pills nav-justified">
-                                <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="pill" href="#latest">Latest</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="pill" href="#popular">Popular</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content">
-
-                                <div id="latest" class="container tab-pane active">
-                                    @foreach ($latest_posts as $post)
-                                    <div class="tn-news">
-                                        <div class="tn-img">
-                                            <img src="{{ asset('frontend/img/' . $post->images->first()->path) }}" />
-                                        </div>
-                                        <div class="tn-title">
-                                            <a href="{{ route('frontend.post.show', $post->slug) }}">{{ $post->title
-                                                }}</a>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                </div>
-
-
-                                <div id="popular" class="container tab-pane fade">
-                                    @foreach ($popular_posts as $post)
-                                    <div class="tn-news">
-                                        <div class="tn-img">
-                                            <img src="{{ asset('frontend/img/' . $post->images->first()->path) }}" />
-                                        </div>
-                                        <div class="tn-title">
-                                            <a href="{{ route('frontend.post.show', $post->slug) }}">{{ $post->title }}
-                                                <span style="color: blue; display:block"><i class="fas fa-comment"></i>
-                                                    ({{ $post->comments_count }})
-                                                </span> </a>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
+                <div id="popular" class="container tab-pane fade">
+                    @foreach ($popular_posts as $post)
+                    <div class="tn-news">
+                        <div class="tn-img">
+                            <img src="{{ asset('frontend/img/' . $post->images->first()->path) }}"
+                                 style="width: 70px; height: 70px; object-fit: cover; display: block;" />
                         </div>
-                    </div>
-
-                    {{-- <div class="sidebar-widget">
-                        <div class="image">
-                            <a href="{{ route('frontend.home') }}" title="Home">
-                                <img src="{{ asset('frontend/img/'. $setting->logo ) }}" alt="Logo" />
+                        <div class="tn-title">
+                            <a href="{{ route('frontend.post.show', $post->slug) }}">{{ $post->title }}
+                                <span style="color: blue; display:block"><i class="fas fa-comment"></i>
+                                    ({{ $post->comments_count }})
+                                </span>
                             </a>
                         </div>
-                    </div> --}}
-
-                    <div class="sidebar-widget">
-                        <h2 class="sw-title">News Category</h2>
-                        <div class="category">
-                            <ul>
-                                @foreach ($categories as $category)
-                                <li><a href="">{{ $category->name }}</a><span>({{ $category->posts->count() }})</span>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
                     </div>
+                    @endforeach
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-widget">
+        <h2 class="sw-title">News Category</h2>
+        <div class="category">
+            <ul>
+                @foreach ($categories as $category)
+                <li><a href="">{{ $category->name }}</a><span>({{ $category->posts->count() }})</span>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+</div>
             </div>
         </div>
     </div>

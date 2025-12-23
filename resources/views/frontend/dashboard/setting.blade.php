@@ -9,11 +9,12 @@
 @section('content')
 <!-- Settings Start -->
 <div class="dashboard container">
+    <div class="row">
     <!-- Sidebar -->
     @include('frontend.dashboard._sidebar')
 
     <!-- Main Content -->
-    <div class="main-content">
+    <div class="col-lg-9 col-md-8 main-content">
         <!-- Settings Section -->
         <section id="settings">
             <h2>Settings</h2>
@@ -148,6 +149,7 @@
                 </div>
             </form>
         </section>
+    </div>
     </div>
 </div>
 <!-- Settings End -->

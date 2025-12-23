@@ -9,11 +9,12 @@
 @section('content')
 <!-- Dashboard Start-->
 <div class="dashboard container">
+    <div class="row">
     <!-- Sidebar -->
     @include('frontend.dashboard._sidebar')
 
     <!-- Main Content -->
-    <div class="main-content">
+    <div class="col-lg-9 col-md-8 main-content">
         <div class="container">
             <h2 class="mb-4">Notifications</h2>
             @if(auth()->user()->notifications->count())
@@ -52,6 +53,7 @@
             <div class="alert alert-light text-center">No notifications found.</div>
             @endforelse
         </div>
+    </div>
     </div>
 </div>
 <!-- Dashboard End-->

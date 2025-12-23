@@ -22,5 +22,8 @@
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Template Javascript -->
 <script src="{{ asset('frontend/js/main.js') }}"></script>
+<!-- Theme Toggle JavaScript -->
+<script src="{{ asset('frontend/js/theme-toggle-ar.js') }}"></script>
+
 
 @stack('scripts')

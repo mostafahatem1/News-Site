@@ -19,20 +19,38 @@ use Illuminate\Support\Facades\DB;
 class PostController extends Controller
 {
     use UploadImages;
-    public function getPost(Request $request)
-    {
+  public function getPost(Request $request)
+{
+    try {
         $user = $request->user();
         if (!$user) {
             return api_response('User not found', 404);
         }
-        $posts = $user->posts()->active()->activeCategory()->get(); // Assuming there's a relationship defined
 
-        if ($posts->isEmpty()) {
-            return api_response('No posts found', 404);
-        }
+        // Get user's posts (all posts, not just active)
+        $posts = $user->posts()
+            ->with('user', 'category',  'comments')
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-        return api_response('Posts retrieved successfully', 200, new PostCollection($posts));
+        // Return proper structure that frontend expects
+        return api_response(
+            'Posts retrieved successfully',
+            200,
+            [
+                'posts' => new PostCollection($posts),  // Can be empty
+                'count' => $posts->count()
+            ]
+        );
+    } catch (\Exception $e) {
+        return api_response(
+            'Failed to retrieve posts',
+            500,
+            ['error' => $e->getMessage()]
+        );
     }
+}
+
 
     function storePost(PostRequest $request)
     {
@@ -71,38 +89,47 @@ class PostController extends Controller
         return api_response('Post retrieved successfully', 200, $post);
     }
 
-     public function updatePost(PostRequest $request,$slug)
-    {
+    public function updatePost(PostRequest $request, $slug)
+{
+    try {
+        DB::beginTransaction();
 
-        try {
-            DB::beginTransaction();
-            $post = Post::where('slug', $slug)->first();
-            if ($post->user_id != request()->user()->id) {
+        $post = Post::where('slug', $slug)->first();
 
-                return api_response('You are not authorized to update this post!', 403);
-            }
-            $post->title = $request->title;
-            $post->desc = $request->desc;
-            $post->category_id = $request->category_id;
-            $post->comment_able = $request->comment_able == 'on' ? 1 : 0;
-
-            // Use the trait method for image uploads
-            if ($request->has('images')) {
-                $this->removeImage($post->images);
-                $this->uploadImages($request->images, $post);
-            }
-
-            $post->save();
-            Cache::forget('read_more_posts');
-            Cache::forget('latest_posts');
-            Cache::forget('popular_posts');
-            DB::commit();
-            return api_response('Post updated successfully', 200, $post);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return api_response('Post update failed', 500, ['errors' => $e->getMessage()]);
+        // Add this check
+        if (!$post) {
+            return api_response('Post not found', 404);
         }
+
+        if ($post->user_id != request()->user()->id) {
+            return api_response('You are not authorized to update this post!', 403);
+        }
+
+        $post->title = $request->title;
+        $post->desc = $request->desc;
+        $post->category_id = $request->category_id;
+        $post->comment_able = $request->comment_able == 'on' ? 1 : 0;
+
+        if ($request->has('images')) {
+            $this->removeImage($post->images);
+            $this->uploadImages($request->images, $post);
+        }
+
+        $post->save();
+
+        Cache::forget('read_more_posts');
+        Cache::forget('latest_posts');
+        Cache::forget('popular_posts');
+
+        DB::commit();
+        return api_response('Post updated successfully', 200, $post);
+
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return api_response('Post update failed', 500, ['errors' => $e->getMessage()]);
     }
+}
+
 
     public function deletePost($id)
     {

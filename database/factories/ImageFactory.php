@@ -19,7 +19,7 @@ class ImageFactory extends Factory
      */
     public function definition(): array
     {
-        $paths = ['test/news8.jpg', 'test/news7.jpg','test/news3.jpg' , 'test/news4.jpg' , 'test/news5.jpg'];
+        $paths = ['test/news8.jpg', 'test/news7.jpg','test/news3.jpg' , 'test/news4.jpg' , 'test/news5.jpg', 'test/news6.jpg', 'test/news1.jpg', 'test/news2.jpg','test/news9.jpg','test/news10.jpg','test/news11.jpg'];
         return [
             'path'=>fake()->randomElement($paths),
         ];

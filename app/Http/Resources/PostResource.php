@@ -20,6 +20,7 @@ class PostResource extends JsonResource
 
                 'title' => $this->title,
                 'num_of_views' => $this->num_of_views,
+                'comments_count' => $this->comments_count,
                 'slug' => $this->slug,
                 'desc' => $this->desc,
                 'status' => $this->status(),
@@ -35,6 +36,7 @@ class PostResource extends JsonResource
                 'title' => $this->title,
                  'desc' => $this->desc,
                 'num_of_views' => $this->num_of_views,
+                'comments_count' => $this->comments_count,
                 'slug' => $this->slug,
                 'status' => $this->status(),
                 'created_at' => $this->created_at->format('Y-m-d H:i:s'),

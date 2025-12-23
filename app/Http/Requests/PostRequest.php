@@ -27,9 +27,9 @@ class PostRequest extends FormRequest
             'title'        => 'required|string|max:255',
             'desc'         => 'required|string',
             'category_id'  => 'required|exists:categories,id',
-            'comment_able' => 'in:on,off',
+            'comment_able' => 'in:0,1,on,off',
 
-            'images'   => 'required',
+             'images'   => 'nullable|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     case 'PUT':
@@ -37,9 +37,9 @@ class PostRequest extends FormRequest
             'title'        => 'sometimes|required|string|max:255',
             'desc'         => 'sometimes|required|string',
             'category_id'  => 'sometimes|required|exists:categories,id',
-            'comment_able' => 'sometimes|in:on,off',
+            'comment_able' => 'sometimes|in:0,1',
 
-            'images'   => 'sometimes',
+            'images'   => 'sometimes|nullable|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     default:
@@ -48,4 +48,3 @@ class PostRequest extends FormRequest
 
     }
 }
-

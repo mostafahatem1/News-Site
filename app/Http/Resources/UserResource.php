@@ -21,6 +21,7 @@ class UserResource extends JsonResource
         ];
 
         if($request->is('api/user/account')) {
+             $data['id'] = $this->id;
             $data['email'] = $this->email;
             $data['username'] = $this->username;
             $data['phone'] = $this->phone;

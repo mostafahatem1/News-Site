@@ -41,14 +41,14 @@ class UserRequest extends FormRequest
             case 'PATCH': {
 
                     return [
-                        'name' => ['required', 'string', 'max:255'],
+                        'name' => ['nullable', 'string', 'max:255'],
                         'username' => ['required', 'string', 'max:255', 'unique:users,username,' .  auth()->id()],
                         'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . auth()->id()],
                         'phone' => ['nullable', 'string', 'max:20'],
                         'country' => ['nullable', 'string', 'max:100'],
                         'city' => ['nullable', 'string', 'max:100'],
                         'street' => ['nullable', 'string', 'max:100'],
-                        'gender' => ['required', 'in:0,1'],
+                        'gender' => ['nullable', 'in:0,1'],
                         'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
                         'password' => ['nullable', 'string', 'min:8', 'confirmed'],
                     ];

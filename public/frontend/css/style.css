@@ -1459,6 +1459,140 @@ a:hover {
   line-height: var(--line-height-normal);
   margin: 0;
 }
+/* Fixed Image Sizes for Sidebar */
+
+/* In This Category Section */
+.nl-item {
+    display: flex;
+    gap: var(--space-12);
+    margin-bottom: var(--space-16);
+    padding: var(--space-12);
+    border-radius: var(--radius-base);
+    background: var(--color-secondary);
+    transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.nl-item:hover {
+    background: var(--color-secondary-hover);
+    transform: translateX(4px);
+}
+
+.nl-img {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.nl-img-fixed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.nl-title {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.nl-title a {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-tight);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+/* Latest/Popular Tab News */
+.tn-news {
+    display: flex;
+    gap: var(--space-12);
+    margin-bottom: var(--space-16);
+    padding: var(--space-12);
+    border-radius: var(--radius-base);
+    background: var(--color-secondary);
+    transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.tn-news:hover {
+    background: var(--color-secondary-hover);
+    transform: translateX(4px);
+}
+
+.tn-img {
+    flex-shrink: 0;
+    width: 70px;
+    height: 70px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.tn-img-fixed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.tn-title {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.tn-title a {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-tight);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+}
+
+.tn-title span {
+    margin-top: var(--space-4);
+    font-size: var(--font-size-xs);
+}
+
+/* Category Section */
+.sidebar-widget .category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-widget .category ul li {
+    padding: var(--space-12) var(--space-8);
+    border-bottom: 1px solid var(--color-card-border-inner);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.sidebar-widget .category ul li:last-child {
+    border-bottom: none;
+}
+
+.sidebar-widget .category ul li a {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+    flex: 1;
+}
+
+.sidebar-widget .category ul li a:hover {
+    color: var(--color-primary-hover);
+}
+
+.sidebar-widget .category ul li span {
+    background: var(--color-secondary);
+    padding: var(--space-4) var(--space-8);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+}
+
 
 /* ============================================
    PAGINATION
@@ -2166,6 +2300,9 @@ a:hover {
   background: var(--color-surface);
   padding: var(--space-16) 0;
   border-bottom: 1px solid var(--color-border);
+}
+.breadcrumb{
+  background: var(--color-secondary);
 }
 
 /* Fix carousel spacing and arrow visibility */

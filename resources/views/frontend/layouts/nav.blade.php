@@ -1,5 +1,3 @@
-
-
 <!-- Brand Start -->
 <div class="brand">
     <div class="container">
@@ -12,9 +10,7 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-4">
-                <div class="b-ads">
-
-                </div>
+                <div class="b-ads"></div>
             </div>
             <div class="col-lg-3 col-md-4">
                 <div class="b-search">
@@ -32,7 +28,7 @@
 <!-- Nav Bar Start -->
 <div class="nav-bar">
     <div class="container">
-        <nav class="navbar navbar-expand-md  navbar-dark">
+        <nav class="navbar navbar-expand-md navbar-dark">
             <a href="#" class="navbar-brand">MENU</a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -56,11 +52,15 @@
                     <a href="{{ route('frontend.dashboard.profile') }}"
                         class="nav-item nav-link {{ Route::currentRouteName() === 'frontend.dashboard.profile' ? 'active' : '' }}">Dashboard</a>
                     <a href="{{ route('frontend.contact.show') }}"
-                        class="nav-item nav-link {{ Route::currentRouteName() === 'frontend.contact.show' ? 'active' : '' }}">Contact
-                        Us</a>
+                        class="nav-item nav-link {{ Route::currentRouteName() === 'frontend.contact.show' ? 'active' : '' }}">Contact Us</a>
                 </div>
 
                 <div class="navbar-nav ml-auto align-items-center">
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" class="btn-theme-toggle mr-3" title="Toggle Dark/Light Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+
                     <!-- Social icons -->
                     <div class="social d-none d-md-flex mr-3">
                         <a href="{{ $setting->twitter }}" title="twitter"><i class="fab fa-twitter"></i></a>
@@ -70,7 +70,6 @@
                     </div>
                     @auth
                     <!-- Notification Dropdown (moved outside .social) -->
-
                     <div class="nav-item dropdown mr-3">
                         <a href="#" class="nav-link dropdown-toggle p-0 position-relative" id="notificationDropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Notifications">
@@ -115,7 +114,6 @@
                             @endif
                         </div>
                     </div>
-
 
                     <!-- User dropdown -->
                     <div class="nav-item dropdown">

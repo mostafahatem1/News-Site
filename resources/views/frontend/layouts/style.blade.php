@@ -14,6 +14,13 @@
 <!-- Template Stylesheet -->
 <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet" />
 
+
+<link rel="stylesheet" href="{{ asset('frontend/css/dashboard-styles.css') }}">
+
+<link rel="stylesheet" href="{{ asset('frontend/css/theme-toggle-styles.css') }}">
+
+
+
 <style>
     .carousel-img-small {
         width: 100%;

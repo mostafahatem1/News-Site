@@ -15,7 +15,7 @@ class GeneralController extends Controller
 {
     public function allPosts()
     {
-        $query = Post::query()->with(['user', 'category', 'images'])->activeUser()->activeCategory()->active();
+        $query = Post::query()->with(['user', 'category', 'images'])->withCount('comments')->activeUser()->activeCategory()->active();
 
         if ($query->count() === 0) {
             return api_response('No posts found', 404, null);
@@ -73,13 +73,21 @@ class GeneralController extends Controller
         $categories = Category::active()->get();
 
         return $categories->each(function ($category) {
-            $category->setRelation('posts', $category->posts->take(4));
+            // Use the relationship query so we can chain withCount() and take()
+            $posts = $category->posts()->withCount('comments')->take(4)->get();
+            $category->setRelation('posts', $posts);
         });
     }
 
     public function showPosts($slug)
     {
-        $post = Post::with(['user', 'category', 'images'])->activeUser()->activeCategory()->active()->where('slug', $slug)->first();
+        $post = Post::with(['user', 'category', 'images'])
+            ->withCount('comments')
+            ->activeUser()
+            ->activeCategory()
+            ->active()
+            ->where('slug', $slug)
+            ->first();
         if (!$post) {
             return api_response('Post not found', 404, null);
         }
