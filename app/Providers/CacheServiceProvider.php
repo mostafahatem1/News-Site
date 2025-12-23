@@ -24,36 +24,45 @@ class CacheServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $relatedSite = collect(); // فارغ افتراضي
+        $categories = collect();  // فارغ افتراضي
+        $read_more_posts = collect();
+        $latest_posts = collect();
+        $popular_posts = collect();
 
+        // related_sites
         if (Schema::hasTable('related_sites')) {
             $relatedSite = RelatedSite::select('name', 'url')->get();
         }
 
+        // categories
         if (Schema::hasTable('categories')) {
             $categories = Category::select('id', 'slug', 'name')->where('status', 1)->get();
         }
 
-        if (!Cache::has('read_more_posts')) {
-            Cache::remember('read_more_posts', 3600, function () {
-                return Post::select('slug', 'title')->where('status', 1)->latest()->limit(10)->get();
-            });
-        }
-        $read_more_posts = Cache::get('read_more_posts');
+        // posts
+        if (Schema::hasTable('posts')) {
+            if (!Cache::has('read_more_posts')) {
+                Cache::remember('read_more_posts', 3600, function () {
+                    return Post::select('slug', 'title')->where('status', 1)->latest()->limit(10)->get();
+                });
+            }
+            $read_more_posts = Cache::get('read_more_posts');
 
-        if (!Cache::has('latest_posts')) {
-            Cache::remember('latest_posts', 3600, function () {
-                return Post::with('images')->where('status', 1)->latest()->take(5)->get();
-            });
-        }
-        $latest_posts = Cache::get('latest_posts');
+            if (!Cache::has('latest_posts')) {
+                Cache::remember('latest_posts', 3600, function () {
+                    return Post::with('images')->where('status', 1)->latest()->take(5)->get();
+                });
+            }
+            $latest_posts = Cache::get('latest_posts');
 
-        if (!Cache::has('popular_posts')) {
-            Cache::remember('popular_posts', 3600, function () {
-                return Post::with('images')->where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->take(5)->get();
-            });
+            if (!Cache::has('popular_posts')) {
+                Cache::remember('popular_posts', 3600, function () {
+                    return Post::with('images')->where('status', 1)->withCount('comments')->orderBy('comments_count', 'desc')->take(5)->get();
+                });
+            }
+            $popular_posts = Cache::get('popular_posts');
         }
-        $popular_posts = Cache::get('popular_posts');
-
 
         view()->share([
             'read_more_posts' => $read_more_posts,
